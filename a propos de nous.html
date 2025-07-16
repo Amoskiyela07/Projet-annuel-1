@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos de nous - Boulangerie Miséricorde Divine</title>
+  <link rel="stylesheet" href="a propos de nous.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header>
+    <h1>À propos de nous</h1>
+    <a href="index.html" target="_blank" class="nav-link">
+     <h2> Acceuil</h2>
+    </a>
+    <!-- header --> 
+     <header>
+        <nav>
+            <div class="menu">
+                <ul id="menuList">
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="a propos de nous.html">A propos de nous</a></li>
+                    <li><a href="produit.html">Catalogue de produit</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="menu-icon">
+              <i class="fa solid fa-bars" onclick="toggleMenu()"></i>
+            </div>
+        </nav>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div class="header-end">
+            
+            <a href="produit.html">
+                <button><span>Click & collect</span><img src="click_collect.png" alt="image button"></button>
+            </a>
+        </div>
+     </header>
+  </header></br></br></br></br>
+
+  <main class="about-section">
+    <section class="intro">
+      <img src="Devanture de la boulangerie.png" alt="Devanture de la boulangerie">
+      <div>
+        <h2>Notre histoire</h2>
+        <p>
+          Fondée en 2021, la Boulangerie Miséricorde Divine est une entreprise familiale située au cœur de la ville.
+          Depuis plus de 3 ans, nous partageons avec passion notre amour du pain, des viennoiseries et des pâtisseries artisanales.
+        </p>
+        <p>
+          Chaque jour, nos boulangers travaillent avec des ingrédients locaux et des recettes traditionnelles,
+          pour garantir la qualité et la fraîcheur de tous nos produits.
+        </p>
+      </div>
+    </section>
+
+    <section class="photos">
+      <h2>Notre équipe & notre atelier</h2></br>
+      <div class="gallery">
+        <img src="L'équipe de la boulangerie.jpeg" alt="L'équipe de la boulangerie">
+        <img src="Le four traditionnel.jpeg" alt="Le four traditionnel">
+        <img src="Pains sortis du four.jpeg" alt="Pains sortis du four">
+      </div>
+    </section>
+
+    <section class="mission">
+      <h2>Notre mission</h2>
+      <p>
+        Offrir du pain de qualité, fabriqué avec amour et dans le respect des traditions boulangères.
+        Nous mettons l'accent sur la proximité, la qualité et le service client.
+      </p>
+    </section>
+  </main></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+      <!-- footer -->
+     <footer>
+        <div class="div1">
+            <p>Suivez-nous pour plus de gourmandises !</p>
+            <div class="icones_social">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <p>Notre savoir-faire, partout avec vous</p>
+            <div>
+                <img src="app_store.png">
+                <img src="play_store.png">
+            </div>
+        </div>
+        <hr>
+         <div class="div2">
+            <div>
+                <h3>Notre boulangerie</h3>
+                <ul>
+                    <a href="produit.html">Catalogue produit</a>
+                    <a href="a propos de nous.html">A propos de nous</a>
+                </ul>
+            </div>
+    
+            <div>
+                <h3>Services connectés</h3>
+                <ul>
+                    <a href="contact.html">Contact</a>
+                    <a href="FAQ.html">FAQ</a>
+                    <a href="avis.html">Les avis en ligne</a>
+                </ul>
+            </div>
+            <div>
+                <h3>informations légales</h3>
+                <ul>
+                    <a href="Mention legales.html">Mentions légales</a>
+                    <a href="cvg.html">Conditions générales de vente</a>
+                    <a href="politique.html">Politique de confidentialité</a>
+                </ul>
+            </div>
+        </div>
+        <hr>
+         <div class="div3">
+            <p>Votre vitalité commence ici.</p>
+            <p>&copy; 2025 Miséricorde Divine. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- footer -->
+     <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Miséricorde Divine</title>
+    <link rel="stylesheet" href="contact.css">
+    <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- header --> 
+     <header>
+        <nav>
+            <div class="menu">
+                <ul id="menuList">
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="a propos de nous.html">A propos de nous</a></li>
+                    <li><a href="produit.html">Catalogue de produit</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+            </ul>
+            </div>
+            <div class="menu-icon">
+                <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+            </div>
+        </nav>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div class="header-end">
+            <a href="produit.html">
+                <button><span>Click & collect</span><img src="click_collect.png" alt="image button"></button>
+            </a>
+        </div>
+     </header>
+    <!-- header -->
+    <section class="contact">
+        <div class="container">
+            <h2>Contactez nous</h2>
+            <div class="contact-wrapper">
+                <div class="contact-form">
+                    <h3>Envoyer nous un message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" name="nom" placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Votre email">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Votre message" style="resize: none;"></textarea>
+                        </div>
+                        <div class="send">
+                            <button type="submit" id="send"><span>Envoyer</span></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <p><i class="fa-solid fa-phone"></i>+243 973 983 466</p>
+                    <p><i class="fa-solid fa-envelope"></i>bertrandmak7@gmail.com</p>
+                    <p><i class="fa-solid fa-map-marker-alt"></i>Quartier Gambela, 2465 Route de Kasapa, Lubumbashi, Congo-Kinshasa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer -->
+     <footer>
+        <div class="div1">
+            <p>Suivez-nous pour plus de gourmandises !</p>
+            <div class="icones_social">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <p>Notre savoir-faire, partout avec vous</p>
+            <div>
+                <img src="app_store.png">
+                <img src="play_store.png">
+            </div>
+        </div>
+        <hr>
+         <div class="div2">
+            <div>
+                <h3>Notre boulangerie</h3>
+                <ul>
+                    <a href="produit.html">Catalogue produit</a>
+                    <a href="a propos de nous.html">A propos de nous</a>
+                </ul>
+            </div>
+    
+            <div>
+                <h3>Services connectés</h3>
+                <ul>
+                    <a href="contact.html">Contact</a>
+                    <a href="FAQ.html">FAQ</a>
+                    <a href="avis.html">Les avis en ligne</a>
+                </ul>
+            </div>
+            <div>
+                <h3>informations légales</h3>
+                <ul>
+                    <a href="Mention legales.html">Mentions légales</a>
+                    <a href="cvg.html">Conditions générales de vente</a>
+                    <a href="politique.html">Politique de confidentialité</a>
+                </ul>
+            </div>
+        </div>
+        <hr>
+         <div class="div3">
+            <p>Votre vitalité commence ici.</p>
+            <p>&copy; 2025 Miséricorde Divine. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- footer -->
+     <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+      
+      </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de confidentialité - Miséricorde Divine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="politique.css">
+    <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+
+    
+</head>
+<body>
+    <!-- header --> 
+     <header>
+        <nav>
+            <div class="menu">
+                <ul id="menuList">
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="a propos de nous.html">A propos de nous</a></li>
+                    <li><a href="produit.html">Catalogue de produit</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+            </ul>
+            </div>
+            <div class="menu-icon">
+                <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+            </div>
+        </nav>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div class="header-end">
+            <a href="produit.html">
+                <button><span>Click & collect</span><img src="click_collect.png" alt="image button"></button>
+            </a>
+        </div>
+     </header>
+    <!-- header -->
+
+
+    <main>
+        <div class="accueil">
+            <h2>Politique de confidentialité</h2>
+        <p class="last-update">Dernière mise à jour : 03/07/2025</p>
+        </div>
+        <section>
+            <p>La boulangerie Miséricorde Divine s'engage à protéger votre vie privée. 
+                Cette politique explique comment nous traitons vos informations personnelles conformément au RGPD
+                (Règlement Général sur la Protection des Données).</p>
+        </section>
+
+        <section>
+            <h3>1. Informations collectées</h3>
+            <p>Nous recueillons uniquement les données nécessaires :</p>
+            <ul>
+                <li>Identité et coordonnées (nom, email, téléphone, adresse)</li>
+                <li>Historique des commandes et préférences</li>
+                <li>Données de paiement sécurisées (via notre prestataire agréé)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>2. Finalités du traitement</h3>
+            <p>Vos données sont utilisées pour :</p>
+            <ul>
+                <li>Exécuter vos commandes</li>
+                <li>Vous fournir un service personnalisé</li>
+                <li>Améliorer la qualité de nos produits</li>
+                <li>Respecter nos obligations légales</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>3. Protection des données</h3>
+            <p>Nous mettons en œuvre des mesures rigoureuses :</p>
+            <ul>
+                <li>Chiffrement SSL des transmissions</li>
+                <li>Accès restreint au personnel habilité</li>
+                <li>Sauvegardes régulières et sécurisées</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>4. Durée de conservation</h3>
+            <ul>
+                <li>Données clients : 3 ans après la dernière activité</li>
+                <li>Données comptables : 10 ans (obligation légale)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>5. Vos droits</h3>
+            <p>Conformément au RGPD, vous pouvez :</p>
+            <ul>
+                <li>Accéder à vos données</li>
+                <li>Demander leur rectification</li>
+                <li>Vous opposer à leur traitement</li>
+                <li>Demander leur effacement</li>
+            </ul>
+            <p>Pour exercer ces droits : <a href="mailto:donnees@arbbel.fr">donnees@arbbel.fr</a></p>
+        </section>
+    </main>
+
+    <!-- footer -->
+     <footer>
+        <div class="div1">
+            <p>Suivez-nous pour plus de gourmandises !</p>
+            <div class="icones_social">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <p>Notre savoir-faire, partout avec vous</p>
+            <div>
+                <img src="app_store.png">
+                <img src="play_store.png">
+            </div>
+        </div>
+        <hr>
+         <div class="div2">
+            <div>
+                <h3>Notre boulangerie</h3>
+                <ul>
+                    <a href="produit.html">Catalogue produit</a>
+                    <a href="a propos de nous.html">A propos de nous</a>
+                </ul>
+            </div>
+    
+            <div>
+                <h3>Services connectés</h3>
+                <ul>
+                    <a href="contact.html">Contact</a>
+                    <a href="FAQ.html">FAQ</a>
+                    <a href="avis.html">Les avis en ligne</a>
+                </ul>
+            </div>
+            <div>
+                <h3>Informations légales</h3>
+                <ul>
+                    <a href="Mention legales.html">Mentions légales</a>
+                    <a href="cvg.html">Conditions générales de vente</a>
+                    <a href="politique.html">Politique de confidentialité</a>
+                </ul>
+            </div>
+        </div>
+        <hr>
+         <div class="div3">
+            <p>Votre vitalité commence ici.</p>
+            <p>&copy; 2025 Miséricorde Divine. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- footer -->
+      <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+      
+      </script>
+</body>
+</html>

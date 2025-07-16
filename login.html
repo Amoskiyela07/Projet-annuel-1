@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion / Inscription</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="wrapper">
+    <form id="main-form" onsubmit="handleSubmit(event)">
+    <img src="logo.jpg" alt="logo" class="logo">
+      <h1 id="form-title">Se connecter</h1>
+
+      <div id="message-box"></div>
+
+      <div id="form-fields">
+        <div class="input-box">
+          <input type="text" placeholder="Nom d'utilisateur" id="username" required>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Mot de passe" id="password" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+      </div>
+
+      <div class="remember-forgot" id="login-extra">
+        <label><input type="checkbox"> Se souvenir de moi</label>
+      </div>
+
+      <button type="submit" class="btn" id="form-button">Se connecter</button>
+
+      <div class="register-link">
+        <p id="toggle-text">
+          Vous n'avez pas de compte ? <a href="#" onclick="toggleMode()">S'inscrire</a>
+        </p>
+        <br>
+        <a href="index.html" class="accueil">Retour à la page d'acceuil</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+     let isLogin = true;
+    const users = [
+      { username: "amos", password: "1234" },
+      { username: "admin", password: "admin" }
+    ];
+    function toggleMode() {
+      const title = document.getElementById("form-title");
+      const fields = document.getElementById("form-fields");
+      const button = document.getElementById("form-button");
+      const toggle = document.getElementById("toggle-text");
+      const extra = document.getElementById("login-extra");
+      const msg = document.getElementById("message-box");
+      msg.innerHTML = ""; // Effacer les messages
+
+      if (isLogin) {
+        title.textContent = "S'inscrire";
+        fields.innerHTML = `
+          <div class="input-box">
+            <input type="text" placeholder="Nom" id="nom" required>
+            <i class='bx bxs-user'></i>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Prénom" id="prenom" required>
+            <i class='bx bxs-user'></i>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Nom d'utilisateur" id="username" required>
+            <i class='bx bxs-user'></i>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Mot de passe" id="password" required>
+            <i class='bx bxs-lock-alt'></i>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Confirmer le mot de passe" id="confirm-password" required>
+            <i class='bx bxs-lock-alt'></i>
+          </div>
+          <div class="input-box">
+            <input type="number" placeholder="Âge" id="age" required>
+            <i class='bx bxs-calendar'></i>
+          </div>`;
+        button.textContent = "S'inscrire";
+        toggle.innerHTML = `Vous avez déjà un compte ? <a href="#" onclick="toggleMode()">Se connecter</a>`;
+        extra.style.display = "none";
+      } else {
+        title.textContent = "Se connecter";
+        fields.innerHTML = `
+          <div class="input-box">
+            <input type="text" placeholder="Nom d'utilisateur" id="username" required>
+            <i class='bx bxs-user'></i>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Mot de passe" id="password" required>
+            <i class='bx bxs-lock-alt'></i>
+          </div>`;
+        button.textContent = "Se connecter";
+        toggle.innerHTML = `Vous n'avez pas de compte ? <a href="#" onclick="toggleMode()">S'inscrire</a>`;
+        extra.style.display = "flex";
+      }
+
+      isLogin = !isLogin;
+    }
+
+    function showMessage(msg, type) {
+      const box = document.getElementById("message-box");
+      box.innerHTML = `<div class="message ${type}">${msg}</div>`;
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (isLogin) {
+        const user = users.find(u => u.username === username);
+        if (!user) {
+          showMessage("Utilisateur non existant", "error");
+        } else if (user.password !== password) {
+          showMessage("Mot de passe incorrect", "error");
+        } else {
+          showMessage("Connexion réussie ✅", "success");
+        }
+      } else {
+        const confirmPassword = document.getElementById("confirm-password").value.trim();
+        const existing = users.find(u => u.username === username);
+        if (existing) {
+          showMessage("Nom d'utilisateur déjà utilisé", "error");
+        } else if (password !== confirmPassword) {
+          showMessage("Les mots de passe ne correspondent pas", "error");
+        } else {
+          users.push({ username, password });
+          showMessage("Inscription réussie 🎉", "success");
+          toggleMode(); // retour à la connexion
+        }
+      }
+    }
+  </script>
+</body>
+</html>

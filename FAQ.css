@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Italianno&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "EB Garamond", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff8f0;
+    font-family: Arial, sans-serif; 
+    padding: 2rem;
+     padding-top: 70px; 
+}
+nav{
+    position: relative;
+    padding: 17px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul li a{
+    font-weight: 700;
+    font-style: bold;
+}
+.menu-icon {
+    display: none;
+}
+.menu-icon i{
+    color: #000;
+    font-size: 30px;
+}
+
+header {
+    position : fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 9%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+.logo {
+    width: 100px;
+    margin-left: -19%;
+}
+
+button img{
+    width: 20px; 
+    margin-left: 10px;
+}
+.menu {
+    display: flex;
+    align-items: center;
+} 
+.menu ul{
+    margin-left: 25px;
+    display: flex;
+    list-style: none;
+    
+}
+.menu ul a{
+    margin-left: 10px;
+    text-transform: capitalize;
+    font-size: 13px;
+    color: #000;
+    text-decoration: 0;
+    position: relative;
+}
+.menu ul a::after {
+    position: absolute;
+    left:0; 
+    bottom: -5px;
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: #f7a800;
+    transition: 0.1s ease-out;
+}
+.menu ul a:hover::after {
+    width: 100%;
+}
+.header-end{
+    display: flex;
+    align-items: center;
+}
+.header-end i{
+    margin-right: 20px;
+}
+a {
+    text-decoration: none;
+}
+button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border:0;
+    padding: 8px 15px;
+    background-color: #f7a800;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 50px;
+    z-index: 1;
+    transition: 0.2s ease-out;
+}
+button span{
+    font-family: 'Anton', sans-serif;
+    font-weight: 15px;
+    width: 100%;
+    text-align: center;
+}
+.home button {
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-left: 25px;
+}
+button:hover{
+    transform: scale(1.06);
+}
+.home{
+    width: 50%;
+    height: 200px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: -20px;
+    position: absolute;
+    padding: 10px 20px;
+    margin-top: -800px;
+}
+h1 {
+    font-size: 3rem;
+    color: #000;
+    margin-bottom: 20px;
+    font-weight: 900;
+    margin-top: -80px
+}
+.home p {
+    font-size: 1.2rem;
+    color: #000;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+.accordion {
+    margin-top: 400px;
+    width: 100%;
+    max-width: 600px;
+    background: #f5f6fa;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 15px 30px 30px rgba(0, 0, 0, 0.4),
+        -5px -15px 30px rgba(0, 0, 0, 0.05);
+}
+.accordion-item{
+    border-bottom: 1px solid #eee;
+}
+.accordion-item:last-child{
+    border-bottom: none;
+}
+.accordion-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba (255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.accordion-header:hover {
+    background: rgba(106, 17, 203, 0.05);
+}
+.accordion-header h3{
+    font-size: 1.2rem;
+    color: #1e272e;
+    margin: 0;
+    font-weight: bold;
+}
+.accordion-header span{
+    font-size: 1.5rem;
+    color: #1e272e;
+    transition: transform 0.3s ease;
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+}
+.accordion-content p{
+    padding: 0 1rem 1rem;
+    color: #000;
+    line-height: 1.6;
+}
+
+/* Active state */
+.accordion-item.active .accordion-header {
+    background-color: #f7a800;
+}
+.accordion-item.active .accordion-header span {
+    transform: rotate(45deg);
+}
+.accordion-item.active .accordion-content {
+    max-height: 500px; /* Adjust based on content */
+    padding: 0 1rem;
+}
+/* footer */
+footer{
+    background-color: #000;
+    color: #fff;
+    margin-top: 20px;
+    padding: 20px 10%;
+    position: absolute;
+    width: 100%;
+    margin-bottom: -130%;
+}
+footer p{
+    font-size: 17px;
+}
+.icones_social{
+    margin: 20px 0;
+}
+.icones_social i{
+    margin-right: 20px;
+    font-size: 20px;
+}
+footer img{
+    margin-top: 20px;
+    border: 1px solid #fff;
+    height: 50px;
+    cursor: pointer;
+}
+footer img:last-child{
+    margin-left: 10px;
+}
+footer .div2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer .div2 h3{
+    margin-bottom: 10px;
+}
+footer .div2 ul{
+    display: flex;
+    flex-direction: column;
+}
+footer .div2 ul a{
+    font-size: 15px;
+    color: #fff;
+    text-decoration: 0;
+    margin-bottom: 5px;
+    transition: 0.5s;
+}
+footer .div2 ul a:hover {
+    letter-spacing: 0.5px;
+}
+footer .div3 {
+    text-align: center;
+}
+footer .div3 p:first-child {
+    font-size: 16px;
+}
+footer .div3 p:last-child {
+    font-size: 15px;
+    color: #999;
+    margin-top: 10px;
+}
+
+@media (max-width: 1200px) {
+    header {
+        padding: 2px 5%; /* Ajuste le padding du header */
+    }
+
+    nav ul{
+        position: absolute;
+        top: 69px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        text-align: center;
+        background: #fff;
+        gap: 0;
+        overflow: hidden;
+        
+    }
+    nav ul li{
+        padding: 20px;
+        padding-top: 0;
+    }
+    .menu-icon{
+        display: block;
+    }
+    #menuList{
+        transition: all 0.5s;
+    }
+
+    .logo {
+        margin-left: -5%; /* Ajuste la marge du logo */
+    }
+    h1{
+        margin-top: -100px;
+        font-size: 1.5rem;
+    }
+    .home {
+        width: 100%;
+        margin-top: -1200px;
+    }
+    footer {
+        margin-top: 600%; /* Ajoute un espace au-dessus du copyright */
+    }
+    footer .div2 {
+        flex-direction: column; /* Empile les éléments du footer */
+        align-items: flex-start; /* Aligne les éléments à gauche */
+        gap: 20px;
+    }
+
+    footer .div2 ul {
+        align-items: flex-start;
+    }
+
+    footer p,
+    footer .div2 ul a {
+        font-size: 13px;
+    }
+}

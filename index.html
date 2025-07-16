@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miséricorde Divine</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <!-- header --> 
+     <header>
+        <nav>
+            <div class="menu">
+                <ul id="menuList">
+                    <li><a href="#">Acceuil</a></li>
+                    <li><a href="a propos de nous.html">A propos de nous</a></li>
+                    <li><a href="produit.html">Catalogue de produit</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+            </ul>
+            </div>
+            <div class="menu-icon">
+                <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+            </div>
+        </nav>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div class="header-end">
+            <i class="fa-solid fa-user">
+                <div class="login">
+                    <a href="login.html">
+                        <button id="connect"><span>Se connecter</span></button>
+                    </a>
+                    <hr>
+                    <p>Vous n'avez pas encore de compte ?</p>
+                    <a href="login.html">
+                        <button><span>S'incrire</span></button>
+                    </a>
+                </div>
+            </i>
+            <a href="produit.html">
+                <button><span>Click & collect</span><img src="click_collect.png" alt="image button"></button>
+            </a> 
+        </div>
+     </header>
+    <!-- header -->
+
+    <!-- home -->
+     <section class="home">
+       <div class="accueil">
+         <h1>Bienvenue chez Miséricorde Divine</h1>
+        <p>Découvrez l'art de la boulangerie artisanale, où chaque pain est une œuvre d'amour.</p>
+       </div>
+        <a href="#little-food">
+            <button><span>Découvrez</span></button>
+        </a>
+     </section>
+    <!-- home -->
+
+    <!-- foods -->
+     <section class="foods">
+        <h1 class="">Le goût authentique, notre fierté</h1>
+        <p>Découvrez les actualités du moment</p>
+        <div class="foods-list">
+            <div class="box">
+                <img src="sweettreatsrecipes - Best dessert recipes.jpeg.jpg">
+                <h3>madeleines</h3>
+            </div>
+             <div class="box">
+                <img src="beignets.jpeg" alt="En savoir plus">
+                <h3>Beignets fourrés à la crème</h3>
+            </div>
+            
+     </section>
+    <!-- foods -->
+
+    
+
+    <!-- little food -->
+    <section class="little-food" id="little-food">
+        <h1>Un petit creux rapide ou une envie de passer à table ? 🍞 </h1>
+        <div class="little-food_box">
+            <div class="box">
+                <h3>Pains de mie</h3> 
+                <img src="tartine.jpeg">
+            </div>
+             <div class="box">
+                <h3>Baguettes</h3> 
+                <img src="Baguette3.jpeg">
+            </div>
+             <div class="box">
+                <h3>Croissants</h3> 
+                <img src="croissante.jpeg">
+            </div>
+             <div class="box">
+                <h3>Pains au chocolat</h3> 
+                <img src="Chocolate Croissant2.jpeg">
+            </div>
+        </div>
+    </section>
+    <!-- little food -->
+    
+    <!-- footer -->
+     <footer>
+        <div class="div1">
+            <p>Suivez-nous pour plus de gourmandises !</p>
+            <div class="icones_social">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <p>Notre savoir-faire, partout avec vous</p>
+            <div>
+                <img src="app_store.png">
+                <img src="play_store.png">
+            </div>
+        </div>
+        <hr>
+         <div class="div2">
+            <div>
+                <h3>Notre boulangerie</h3>
+                <ul>
+                    <a href="produit.html">Catalogue produit</a>
+                    <a href="a propos de nous.html">A propos de nous</a>
+                </ul>
+            </div>
+    
+            <div>
+                <h3>Services connectés</h3>
+                <ul>
+                    <a href="contact.html">Contact</a>
+                    <a href="FAQ.html">FAQ</a>
+                    <a href="avis.html">Les avis en ligne</a>
+                </ul>
+            </div>
+            <div>
+                <h3>informations légales</h3>
+                <ul>
+                    <a href="Mention legales.html">Mentions légales</a>
+                    <a href="cvg.html">Conditions générales de vente</a>
+                    <a href="politique.html">Politique de confidentialité</a>
+                </ul>
+            </div>
+        </div>
+        <hr>
+         <div class="div3">
+            <p>Votre vitalité commence ici.</p>
+            <p>&copy; 2025 Miséricorde Divine. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- footer -->
+    <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+        
+    </script>
+</body>
+</html>

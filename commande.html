@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>commande</title><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos de nous - Boulangerie Miséricorde Divine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="commande.css">
+  <style>
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Informations client</h1>
+    <form id="identite-form">
+      <img src="logo.jpg" alt="logo" class="logo">
+      <label>
+        Nom :
+        <input type="text" name="nom" required>
+      </label>
+      <label>
+        Prénom :
+        <input type="text" name="prenom" required>
+      </label>
+      <label>
+        Adresse mail :
+        <input type="email" name="email" required>
+      </label>
+
+       <!-- ...après le formulaire identité... -->
+<fieldset>
+  <legend>Système de paiement</legend>
+  <label>
+    <input type="radio" name="paiement" value="cb" required>
+    Carte bancaire
+  </label>
+  <label>
+    <input type="radio" name="paiement" value="mobile">
+    Réseau mobile
+  </label>
+
+  <div id="cb-fields" style="display:none; margin-top:8px;">
+    <label>
+      Numéro de carte bancaire :
+      <input type="text" name="cb-numero" maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+    </label>
+  </div>
+
+  <div id="mobile-fields" style="display:none; margin-top:8px;">
+    <label>Choisissez le réseau :</label>
+    <select id="operateur" name="operateur">
+      <option value="">-- Sélectionnez --</option>
+      <option value="airtel">Airtel Money</option>
+      <option value="orange">Orange Money</option>
+      <option value="mpsa">M-PSA</option>
+    </select>
+    <label style="margin-top:8px; display:block;">
+      Numéro de téléphone :
+      <input type="text" name="mobile-numero" placeholder="+243XXXXXXXXX">
+    </label>
+  </div>
+</fieldset>
+ <button type="submit" class="btn">Valider</button>
+ <div class="accueil">
+  <a href="index.html">Retour à la page d'accueil</a>
+ </div>
+</form>
+
+<script>
+  // Affichage dynamique des champs de paiement
+  document.querySelectorAll('input[name="paiement"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      document.getElementById('cb-fields').style.display = (this.value === 'cb') ? 'block' : 'none';
+      document.getElementById('mobile-fields').style.display = (this.value === 'mobile') ? 'block' : 'none';
+      checkFormValidity();
+    });
+  });
+
+  // Vérification des champs obligatoires
+  const form = document.getElementById('identite-form');
+  const btn = form.querySelector('button[type="submit"]');
+  form.addEventListener('input', checkFormValidity);
+  form.addEventListener('change', checkFormValidity);
+
+  function checkFormValidity() {
+    let valid = true;
+    // Identité
+    valid &&= form.nom.value.trim() !== '';
+    valid &&= form.prenom.value.trim() !== '';
+    valid &&= form.email.value.trim() !== '';
+
+    // Paiement
+    const paiement = form.querySelector('input[name="paiement"]:checked');
+    if (!paiement) valid = false;
+    else if (paiement.value === 'cb') {
+      valid &&= form['cb-numero'].value.trim().length >= 12;
+    } else if (paiement.value === 'mobile') {
+      valid &&= form.operateur.value !== '';
+      valid &&= form['mobile-numero'].value.trim().length >= 8;
+    }
+    btn.disabled = !valid;
+  }
+
+  // Empêche la soumission si le formulaire est incomplet et affiche un message de succès si tout est bon
+  form.addEventListener('submit', function(e) {
+    checkFormValidity();
+    if (btn.disabled) {
+      e.preventDefault();
+      alert("Veuillez compléter tous les champs obligatoires.");
+    } else {
+      e.preventDefault();
+      alert("Votre commande a été acceptée avec succès !");
+      form.reset();
+      document.getElementById('cb-fields').style.display = 'none';
+      document.getElementById('mobile-fields').style.display = 'none';
+      btn.disabled = true;
+    }
+  });
+
+  // Initialisation
+  checkFormValidity();
+</script>
+</body>
+</html>

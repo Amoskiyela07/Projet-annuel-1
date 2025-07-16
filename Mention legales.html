@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mentions légales - Miséricorde Divine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Mention legales.css" />
+  <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- header --> 
+     <header>
+        <nav>
+            <div class="menu">
+                <ul id="menuList">
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="a propos de nous.html">A propos de nous</a></li>
+                    <li><a href="produit.html">Catalogue de produit</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+            </ul>
+            </div>
+            <div class="menu-icon">
+                <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+            </div>
+        </nav>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div class="header-end">
+            <a href="produit.html">
+                <button><span>Click & collect</span><img src="click_collect.png" alt="image button"></button>
+            </a>
+        </div>
+     
+  </header>
+
+  <main>
+    <h2>Éditeur du site</h2>
+    <p><strong>Nom de la boulangerie :</strong> Miséricorde Divine</p>
+    <p><strong>Responsable :</strong>Akonkwa Makangara Bernard </p>
+    <p><strong>Adresse :</strong>L'shi; Q. Gambela; Route Kasapa</p>
+    <p><strong>Email :</strong> bertrandmak7@gmail.com</p>
+    <p><strong>Téléphone :</strong> +243 973 983 466</p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>Le contenu du site (textes, images, logos, etc.) est la propriété de Miséricorde Divine sauf mention contraire. Toute reproduction sans autorisation est interdite.</p>
+
+    <h2>Données personnelles</h2>
+    <p>Les informations recueillies via le formulaire de contact ne sont utilisées qu’à des fins de communication avec le client. Aucune donnée n’est vendue ou partagée à des tiers.</p>
+
+    <h2>Responsabilité</h2>
+    <p>Miséricorde Divine s’efforce d’assurer la fiabilité des informations présentes sur le site, mais ne peut garantir qu’elles soient toujours complètes ou à jour.</p>
+  </main>
+
+  <footer>
+        <div class="div1">
+            <p>Suivez-nous pour plus de gourmandises !</p>
+            <div class="icones_social">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <p>Notre savoir-faire, partout avec vous</p>
+            <div>
+                <img src="app_store.png">
+                <img src="play_store.png">
+            </div>
+        </div>
+        <hr>
+         <div class="div2">
+            <div>
+                <h3>Notre boulangerie</h3>
+                <ul>
+                    <a href="produit.html">Catalogue produit</a>
+                    <a href="a propos de nous.html">A propos de nous</a>
+                </ul>
+            </div>
+    
+            <div>
+                <h3>Services connectés</h3>
+                <ul>
+                    <a href="contact.html">Contact</a>
+                    <a href="FAQ.html">FAQ</a>
+                    <a href="avis.html">Les avis en ligne</a>
+                </ul>
+            </div>
+            <div>
+                <h3>Informations légales</h3>
+                <ul>
+                    <a href="Mention legales.html">Mentions légales</a>
+                    <a href="cvg.html">Conditions générales de vente</a>
+                    <a href="politique.html">Politique de confidentialité</a>
+                </ul>
+            </div>
+        </div>
+        <hr>
+         <div class="div3">
+            <p>Votre vitalité commence ici.</p>
+            <p>&copy; 2025 Miséricorde Divine. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- footer -->
+      <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+      
+      </script>
+</body>
+</html>

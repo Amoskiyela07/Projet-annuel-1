@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier d'achat</title>
+    <link rel="stylesheet" href="panier d'achat.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b0e76e0a54.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <!-- header --> 
+     <header>
+        <nav>
+            <div class="menu">
+                <ul id="menuList">
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="a propos de nous.html">A propos de nous</a></li>
+                    <li><a href="produit.html">Catalogue de produit</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+            </ul>
+            </div>
+            <div class="menu-icon">
+                <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+            </div>
+        </nav>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <div class="header-end">
+            <a class="btn" href="produit.html">Produits</a> 
+        </div>
+     </header>
+    <!-- header -->
+    <!-- ▽ NAVIGATION ▽ -->
+   <div class="panier">
+     <h2>Votre panier</h2>
+    <button onclick="viderPanier()" id="reset">Vider le panier</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+    </table>
+    <h3 id="total-general">Total Général: 0 $</h3>
+
+   </div>
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function renderCart() {
+            const tableBody = document.querySelector("#cart-items");
+            const totalGeneral = document.querySelector("#total-general");
+            tableBody.innerHTML = "";
+            let grandTotal = 0;
+
+            const grouped = {};
+            cart.forEach(product => {
+                if (grouped[product.name]) {
+                    grouped[product.name].quantity += 1;
+                } else {
+                    grouped[product.name] = {
+                        name: product.name,
+                        price: product.price,
+                        quantity: 1
+                    };
+                }
+            });
+
+            for (let key in grouped) {
+                const item = grouped[key];
+                const total = item.quantity * item.price;
+                grandTotal += total;
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                     <td data-label="Produit">${item.name}</td>
+    <td data-label="Quantité">
+        <button onclick="changeQuantity('${item.name}', -1)">-</button>
+        ${item.quantity}
+        <button onclick="changeQuantity('${item.name}', 1)">+</button>
+    </td>
+    <td data-label="Total">${total.toFixed(2)} $</td>
+    <td data-label="Action"><button onclick="removeItem('${item.name}')">Supprimer</button></td>
+`;
+                tableBody.appendChild(row);
+            }
+
+            totalGeneral.textContent = `Total Général: ${grandTotal.toFixed(2)} $`;
+        }
+
+        function changeQuantity(name, delta) {
+            let index = cart.findIndex(p => p.name === name);
+            if (index !== -1) {
+                if (delta > 0) {
+                    cart.push(cart[index]);
+                } else {
+                    let i = cart.findIndex(p => p.name === name);
+                    if (i !== -1) cart.splice(i, 1);
+                }
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+
+        function removeItem(name) {
+            cart = cart.filter(p => p.name !== name);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+
+        function viderPanier() {
+            cart = [];
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+
+        window.onload = () => {
+            renderCart();
+        };
+    </script>
+
+      <!-- Option Livraison et calcul total -->
+   <div class="retrait">
+    <fieldset id="delivery-options">
+    <legend>Mode de livraison</legend>
+    <label><input type="radio" name="delivery" value="pickup" checked> Retrait en magasin (0 $)</label><br>
+    <label><input type="radio" name="delivery" value="home"> Livraison à domicile (5 $)</label>
+
+      <!-- Ajoute ce bloc juste ici -->
+  <div id="quartier-select" style="display:none; margin-top:8px;">
+    <label for="quartier">Choisissez votre quartier :</label>
+    <select id="quartier" name="quartier">
+      <option value="">-- Sélectionnez --</option>
+      <option value="nord">Quartier Golf</option>
+      <option value="sud">Quartier Golf les Battants</option>
+      <option value="est">Quartier Bel-Air</option>
+      <option value="ouest">Quartier Kasapa</option>
+    </select>
+  </div>
+
+  <!-- ...dans le div id="quartier-select" -->
+<div id="adresse-fields" style="display:none; margin-top:8px;">
+  <label for="avenue">Avenue :</label>
+  <input type="text" id="avenue" name="avenue" placeholder="Nom de l'avenue">
+  <label for="numero" style="margin-left:10px;">Numéro :</label>
+  <input type="text" id="numero" name="numero" placeholder="Numéro">
+</div>
+    
+  </fieldset>
+
+  <div id="totals">
+    <p>Total produits : <span id="cart-total">0.00</span> $</p>
+    <p>Frais de livraison : <span id="shipping-fee">0.00</span> $</p>
+    <p><strong>Total général : <span id="grand-total">0.00</span> $</strong></p>
+  </div>
+
+  <button id="orderBtn">Commander</button>
+   </div>
+
+  <script>
+    // 1) Fonction de mise à jour des totaux
+    function updateTotals() {
+      // a) Lire le montant déjà calculé par renderCart()
+      const totalGeneralText = document.getElementById('total-general').innerText;
+      // on extrait le nombre, par ex. "Total Général: 23.50 $"
+      const cartValue = parseFloat(
+        totalGeneralText.replace(/[^0-9.,]/g, '')       // supprime tout sauf chiffres et virgule
+                        .replace(',', '.')               // français -> JS
+      ) || 0;
+
+      // b) Lire l’option de livraison choisie
+      const delivery = document.querySelector('input[name="delivery"]:checked').value;
+      const shippingFee = (delivery === 'home') ? 5.00 : 0.00;
+
+      // c) Mettre à jour l’affichage
+      document.getElementById('cart-total').innerText    = cartValue.toFixed(2);
+      document.getElementById('shipping-fee').innerText  = shippingFee.toFixed(2);
+      document.getElementById('grand-total').innerText   = (cartValue + shippingFee).toFixed(2);
+
+      // d) Stocker pour la page de commande
+      localStorage.setItem('cartTotal',    cartValue.toFixed(2));
+      localStorage.setItem('shippingFee',  shippingFee.toFixed(2));
+    }
+
+    // 2) Quand le panier est rendu, et à chaque changement de radio
+    document.addEventListener('DOMContentLoaded', () => {
+      // on suppose que renderCart() a déjà été appelé juste avant
+      updateTotals();
+
+      document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+        radio.addEventListener('change', updateTotals);
+      });
+
+      document.getElementById('orderBtn').addEventListener('click', () => {
+        window.location.href = 'Commande.html';
+      });
+    });
+document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    const quartierDiv = document.getElementById('quartier-select');
+    if (this.value === 'home') {
+      quartierDiv.style.display = 'block';
+    } else {
+      quartierDiv.style.display = 'none';
+      document.getElementById('quartier').value = '';
+    }
+  });
+});
+// Affichage initial au chargement
+window.addEventListener('DOMContentLoaded', function() {
+  const checked = document.querySelector('input[name="delivery"]:checked').value;
+  document.getElementById('quartier-select').style.display = (checked === 'home') ? 'block' : 'none';
+});
+// Affichage des champs adresse selon le quartier sélectionné
+document.getElementById('quartier').addEventListener('change', function() {
+  const adresseFields = document.getElementById('adresse-fields');
+  if (this.value) {
+    adresseFields.style.display = 'block';
+  } else {
+    adresseFields.style.display = 'none';
+    document.getElementById('avenue').value = '';
+    document.getElementById('numero').value = '';
+      }
+});
+
+// ...dans le script qui gère le bouton Commander...
+document.getElementById('orderBtn').addEventListener('click', () => {
+  // Réinitialiser le panier
+  localStorage.removeItem('cart');
+  // Optionnel : réinitialiser l'affichage du panier immédiatement
+  if (typeof renderCart === 'function') renderCart();
+  // Rediriger vers la page de commande
+  window.location.href = 'Commande.html';
+});
+
+// Ajoute/modifie la fonction renderCart pour activer/désactiver le bouton Commander selon le panier
+function renderCart() {
+    const tableBody = document.querySelector("#cart-items");
+    const totalGeneral = document.querySelector("#total-general");
+    const orderBtn = document.getElementById('orderBtn');
+    tableBody.innerHTML = "";
+    let grandTotal = 0;
+
+    const grouped = {};
+    cart.forEach(product => {
+        if (grouped[product.name]) {
+            grouped[product.name].quantity += 1;
+        } else {
+            grouped[product.name] = {
+                name: product.name,
+                price: product.price,
+                quantity: 1
+            };
+        }
+    });
+
+    for (let key in grouped) {
+        const item = grouped[key];
+        const total = item.quantity * item.price;
+        grandTotal += total;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>
+                <button onclick="changeQuantity('${item.name}', -1)">-</button>
+                ${item.quantity}
+                <button onclick="changeQuantity('${item.name}', 1)">+</button>
+            </td>
+            <td>${total.toFixed(2)} $</td>
+            <td><button onclick="removeItem('${item.name}')">Supprimer</button></td>
+        `;
+        tableBody.appendChild(row);
+    }
+
+    totalGeneral.textContent = `Total Général: ${grandTotal.toFixed(2)} $`;
+
+    // Désactive le bouton Commander si le panier est vide
+    if (orderBtn) {
+        orderBtn.disabled = (cart.length === 0);
+    }
+}
+
+</script>
+  <!-- footer -->
+     <footer>
+        <div class="div1">
+            <p>Suivez-nous pour plus de gourmandises !</p>
+            <div class="icones_social">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <p>Notre savoir-faire, partout avec vous</p>
+            <div>
+                <img src="app_store.png">
+                <img src="play_store.png">
+            </div>
+        </div>
+        <hr>
+         <div class="div2">
+            <div>
+                <h3>Notre boulangerie</h3>
+                <ul>
+                    <a href="produit.html">Catalogue produit</a>
+                    <a href="a propos de nous.html">A propos de nous</a>
+                </ul>
+            </div>
+    
+            <div>
+                <h3>Services connectés</h3>
+                <ul>
+                    <a href="contact.html">Contact</a>
+                    <a href="FAQ.html">FAQ</a>
+                    <a href="avis.html">Les avis en ligne</a>
+                </ul>
+            </div>
+            <div>
+                <h3>informations légales</h3>
+                <ul>
+                    <a href="Mention legales.html">Mentions légales</a>
+                    <a href="cvg.html">Conditions générales de vente</a>
+                    <a href="politique.html">Politique de confidentialité</a>
+                </ul>
+            </div>
+        </div>
+        <hr>
+         <div class="div3">
+            <p>Votre vitalité commence ici.</p>
+            <p>&copy; 2025 Miséricorde Divine. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- footer -->
+    <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+        
+    </script>
+</body>
+</html>
